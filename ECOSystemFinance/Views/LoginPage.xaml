@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ECOSystemFinance.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid RowDefinitions="*,Auto,Auto" Grid.Row="0">
+                <Image Grid.RowSpan="2" Source="green.jpg" VerticalOptions="Start" Aspect="AspectFit"/>
+                <Label Grid.Row="0" Text="Hi!" FontSize="34" TextColor="#008238" VerticalOptions="End" FontAttributes="Bold" Padding="20,0,0,-10"/>
+                <Frame Grid.Row="1" HasShadow="False" Margin="15,0,15,50" VerticalOptions="FillAndExpand" CornerRadius="20" Opacity="0.9" BackgroundColor="#ffffff">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="25" Padding="0,10,0,0">
+                        <Entry x:Name="username" Grid.Row="0" Placeholder="User Name" Text="{Binding UserName}"/>
+                        <Entry x:Name="password" Grid.Row="1" Placeholder="Password" IsPassword="True" Text="{Binding Password}"/>
+
+                        <Grid Grid.Row="2" ColumnDefinitions="*,Auto">
+                            <Button Text="Submit" x:Name="btn_submit" BackgroundColor="#008238" Command="{Binding LoginCommand}" />
+                        
+                            <ImageButton Source="biometric_icon.png" x:Name="bioButton" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" Grid.Column="1" BackgroundColor="Orange" Command="{Binding BiometricLoginCommand}"></ImageButton>
+                        </Grid>
+
+                    </Grid>
+                </Frame>
+
+            </Grid>
+            <Grid Grid.Row="0" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="Orange"></ActivityIndicator>
+            </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

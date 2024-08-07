@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECOSystemFinance.Views.CashPage"
+             >
+
+    <StackLayout Spacing="0" Padding="15">
+
+            <Label Text="Select a Deduction Account:"
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="StartAndExpand" 
+                   TextColor='Black'
+                   FontSize="Medium"/>
+            <Picker x:Name="myPicker"
+                    Title="Select a Deduction Account"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    ItemsSource="{Binding DeductionAccounts}"
+                    SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                    />
+        
+            <Button Text="OK"
+                Command="{Binding submit}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="EndAndExpand" />
+
+        <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="Orange"></ActivityIndicator>
+
+    </StackLayout>
+
+</ContentPage>
